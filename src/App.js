@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import {Message} from "./Message";
 import './App.css';
 
 function App() {
+  //using variables in functional componenets
+    //first argument is variable name, second argument is setter function for that variable
+  let [count, setCount] = useState(0);
+  let [isMorning, setMorning] = useState(true)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className={isMorning ? "daylight" : "nightlight"}>
+        <h1>Day time = {isMorning ? "Morning" : "Night"}</h1>
+      <h1>Hello</h1>
+        <h3>Value of counter: {count}</h3>
+      <button onClick={() => setCount(count + 1)}>Update Counter</button>
+        <button onClick={() => setMorning(!isMorning)}>Change Time</button>
+        <Message count={count}/>
     </div>
   );
 }
+
 
 export default App;
